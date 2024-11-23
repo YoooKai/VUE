@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        body{
+            background-color: rgb(207, 207, 207);
+            max-width: 960px;
+            margin: 20px auto;
+        }
+        p, h3, ul{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style-type: none;
+            background: white;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+        .book-img{
+            height: 100px;
+        }
+        li.fav{
+            background-color: rgb(151, 174, 218);
+            color: white;
+        }
+
+    </style>
+</head>
+
+<h2>Hey</h2>
+
+<div id="app">
+    <!--DYNAMIC CLASSES: dar clases a elementos de acuerdo a ceirta condición  -->
+    <a :href="url">Guide</a>
+    <div v-if="showBooks">
+    <ul>
+        <!--si el valor es true, se aplica la clase, si no, no-->
+        <li v-for="book in filteredBooks" :class="{fav: book.isFav}" @click="toggleFav(book)">
+            <img class="book-img" :src="book.img" :alt="book.title">
+            <h3>{{ book.title }}</h3>
+            <p>{{ book.author }}</p>
+        </li>
+    </ul>
+    </div>
+
+
+
+    <button @click="toggleShowBooks">
+        <span v-if="showBooks">Hide Books</span>
+        <span v-else >Show Books</span>
+    </button>
+
+    <!--funciona igual pero solo lo esconde en css, relamente sigue ahí, no como con el if-->
+    <div v-show="showBooks">currently showing books</div>
+    <br>
+    
+</div>
+
+
+
+
+<p>not here</p>
+
+<script src="app.js"></script>
+<body>
+</body>
+</html>
