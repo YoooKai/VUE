@@ -1,7 +1,87 @@
 
 ---
 
-## **VUE WEBSITES - TUTORIAL 4**
+
+### Resumen del Episodio 5: **Vue.js Slots**
+1. **Definición**:
+   - Los *slots* son una forma de pasar contenido dinámico desde un componente padre a un componente hijo.
+   - Útiles para construir componentes reutilizables y personalizables.
+
+2. **Uso Básico**:
+   - En un componente hijo, los `<slot></slot>` actúan como marcadores de posición.
+   - En el componente padre, el contenido dentro del componente se renderiza en esos espacios designados.
+
+   **Ejemplo**:
+   ```vue
+   <!-- Hijo.vue -->
+   <template>
+     <div>
+       <slot></slot>
+     </div>
+   </template>
+   ```
+
+   ```vue
+   <!-- Padre.vue -->
+   <template>
+     <Hijo>
+       <p>Contenido dinámico</p>
+     </Hijo>
+   </template>
+   ```
+
+3. **Named Slots**:
+   - Permiten designar varios slots dentro del componente hijo, identificándolos por nombre.
+   - Uso del atributo `v-slot:nombre` en el componente padre.
+
+   **Ejemplo**:
+   ```vue
+   <!-- Hijo.vue -->
+   <template>
+     <div>
+       <slot name="header"></slot>
+       <slot name="footer"></slot>
+     </div>
+   </template>
+   ```
+
+   ```vue
+   <!-- Padre.vue -->
+   <template>
+     <Hijo>
+       <template v-slot:header>
+         <h1>Encabezado</h1>
+       </template>
+       <template v-slot:footer>
+         <p>Pie de página</p>
+       </template>
+     </Hijo>
+   </template>
+   ```
+
+4. **Default Slots**:
+   - Si no se proporciona contenido desde el componente padre, los slots pueden tener contenido predeterminado.
+
+   **Ejemplo**:
+   ```vue
+   <template>
+     <slot>
+       <p>Contenido predeterminado</p>
+     </slot>
+   </template>
+   ```
+
+5. **Uso en Componentes Dinámicos**:
+   - Ideal para componentes como modales, tarjetas, o layouts que deben admitir contenido diverso.
+
+6. **Beneficios**:
+   - Facilitan la creación de UI dinámica y escalable.
+   - Separan el diseño y la lógica de los datos.
+
+### Recurso del Video:
+Para más detalles y ejemplos prácticos, puedes ver el video original en [YouTube](https://www.youtube.com/watch?v=KM1U6DqZf8M).
+
+Si necesitas expandir o estructurar más los apuntes, avísame. 😊
 
 ### **Ventajas de usar Vue CLI**
 - Facilita el uso de herramientas modernas de JavaScript.
