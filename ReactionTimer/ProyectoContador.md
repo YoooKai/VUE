@@ -311,3 +311,162 @@ Este componente muestra el tiempo de reacción del usuario y su rango basado en 
 6. **Reactividad**:
    - Cómo los cambios en `data()` actualizan la interfaz en tiempo real.
 
+
+### Block.vue
+```javascript
+<template>
+    <div class="block" v-if="showBlock" @click="stopTimer">
+        click me
+    </div>
+</template>
+
+<script>
+export default {
+    props: ['delay'],
+    data(){
+        return {
+            showBlock: false,
+            timer: null,
+            reactionTime: 0
+            }    
+        },
+    mounted(){
+        setTimeout(() => {
+            this.showBlock = true,
+            this.startTimer()
+    }, this.delay)
+},
+methods: {
+    startTimer(){
+        this.timer=setInterval(() => {
+            this.reactionTime += 10
+        }, 10)
+    },
+    stopTimer(){
+        clearInterval(this.timer)
+        this.$emit('end', this.reactionTime)
+    }
+},
+
+}
+</script>
+
+
+<style>
+.block{
+    width: 400px;
+    border-radius: 20px;
+    background: #0faf87;
+    text-align: center;
+    color: white;
+    padding: 100px 0;
+    margin: 40px auto;
+}
+</style>
+```
+
+### App.vue
+```javascript
+<template>
+  <h1>Reaction Timer</h1>
+  <button @click="start" :disabled="isPlaying">Play</button>
+  <Block v-if="isPlaying" :delay="delay" @end="endGame" />
+  <Results v-if="showResults" :score="score" />
+</template>
+
+<script>
+import Block from './components/Block.vue'
+import Results from './components/Results.vue'
+
+export default {
+  name: 'App',
+  components: { 
+    Block, 
+    Results },
+  data(){
+    return {
+      isPlaying: false,
+      delay: null,
+      score: null,
+      showResults: false
+  }
+},
+  methods: {
+    start(){
+      this.delay = 2000 + Math.random() * 5000
+      this.isPlaying = true
+      this.showResults = false
+    },
+    endGame(reactionTime){
+      this.score = reactionTime
+      this.isPlaying = false
+      this.showResults = true
+    }
+}
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+button{
+    background: #0faf87;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin: 10px  
+}
+button[disabled]{
+    opacity: 0.2;
+    cursor: not-allowed
+}
+</style>
+
+```
+
+### Results
+```javascript
+<template>
+    <p>Reaction Time - {{ score }} ms</p>
+    <p class="rank">{{ rank }}</p>
+</template>
+
+<script>
+export default {
+    props: ['score'],
+    data(){
+        return {
+            rank: null
+    }
+},
+mounted(){
+    if(this.score < 250){
+        this.rank = 'Ninja Fingers'
+    }else if(this.score < 400){
+        this.rank = 'Rapid Reflexes'
+    }else{
+        this.rank = 'Snail pace...'
+    }
+},
+}
+</script>
+
+<style>
+.rank{
+    color: #8B9467;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+</style>
+```
