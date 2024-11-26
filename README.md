@@ -305,3 +305,26 @@ Pero ahora, algunos estilos no están, porque estaban en #app, pero ahora basta 
 <img src="img/73.png">
 
 
+## Life Cycles Hook
+Cada componente VUE que creamos pasa por un ciclo de vida, es creado,es montado en el dom, 
+es actualizado, y al final es destruido cuando no lo necesitamos.
+Los life cycle hooks (o ciclos de vida) en Vue.js son funciones específicas que puedes definir en tus componentes para ejecutar código en ciertos momentos del ciclo de vida del componente. El ciclo de vida se refiere a las etapas por las que pasa un componente desde que se crea hasta que se destruye.
+Por ejemplo, cuando tenemosun sertimeout para mostrar un componente.
+Inicializar datos o configurar el entorno del componente:
+Por ejemplo, en el hook created, el tutorial podría estar configurando variables, cargando datos desde una API, o inicializando la lógica que no requiere acceso al DOM.
+
+Interactuar con el DOM cuando el componente está listo:
+Usan mounted para ejecutar código que necesita el DOM ya renderizado, como inicializar librerías de terceros o agregar manipulaciones específicas al DOM.
+
+Limpiar recursos o temporizadores cuando el componente se elimina:
+Con el hook unmounted, puedes liberar recursos, cancelar suscripciones, o detener temporizadores para evitar fugas de memoria.
+
+Por ejemplo, en el video podrían estar mostrando cómo cargar datos en mounted para que estén disponibles cuando el componente se visualiza, o cómo detener un temporizador en unmounted cuando el componente deja de estar en uso.
+ej:
+```javascript
+updated() {
+  console.log("El DOM ha sido actualizado.");
+}
+```
+<img src="img/74.png">
+
