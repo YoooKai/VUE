@@ -328,3 +328,116 @@ updated() {
 ```
 <img src="img/74.png">
 
+## Forms
+
+### 2Way Data Binding
+
+Para trackear lo que el usuario escribe en un input, usamos vmodel.
+Por ejemplo, si tenemos un input con el vmodel "nombre", Vue.js automáticamente crea un objeto data que contiene el nombre, y podemos acceder a él en cualquier parte del componente
+Esto actualizará la cadena vacía por lo que el usuario teclee en el input:
+
+<img src="img/75.png">
+
+Para trackearlo tenemos que poner:
+
+<img src="img/76.png">
+
+Para comprobar que lo trackeamos, probamos:
+
+<img src="img/77.png">
+
+Y se mostrará debajo:
+
+<img src="img/78.png">
+
+### Select Box
+
+Creamos el elemento con etiqueta v-model:
+
+<img src="img/79.png">
+
+Mostramos la selección debajo:
+
+<img src="img/80.png">
+
+Incluimos el dato, y podemos darle un valor por defecto, como por ejemplo, designer.
+
+<img src="img/81.png">
+
+Y funciona:
+
+<img src="img/82.png">
+
+## Checkboxes
+
+### Un único valor:
+
+Elemento:
+
+<img src="img/83.png">
+
+Ver elemento:
+
+<img src="img/84.png">
+
+Dato true o false según seleccionamos, default false:
+
+<img src="img/85.png">
+
+Se muestra así:
+
+<img src="img/86.png">
+
+### Múltiples valores:
+
+Usamos un array vacío para guardar los datos:
+
+<img src="img/87.png">
+
+<img src="img/88.png">
+
+<img src="img/89.png">
+
+<img src="img/90.png">
+
+### Keyboard Events
+
+Lanza un evento cada vez que hay un evento keyup, es decir, suelto una tecla, dentro de ese input. Entonces se activa skillup, que es una función. Dentro de eso, tomamos el objeto del evento y comprobamos la key, si hubo una coma, y si this.tempskill tiene un valor (es la variable donde guardamos lo que se escribe en el input) metido por el usuario. Si es así, entonces comprobamos que el array de skills no incluya ya el skill que se está escribiendo. Si no está, lo metemos en el array de
+skills. Si está, no hacemos nada. 
+Luego reseteamos el input o vaciamos para añadir otra skill.
+Y usé un replace para quirar la coma.
+
+<img src="img/92.png">
+
+<img src="img/91.png">
+
+<img src="img/93.png">
+
+### Hacer que al seleccionar una skill se borre:
+
+Utilizando el método filter, que crea un array con lo que cumple la condición, si da false, lo quita.
+
+Cambiamos el contenido del div con un span que tenga un evento de click, y llame a la función deleteSkill:
+
+<img src="img/95.png">
+
+<hr>
+
+<img src="img/94.png">
+
+## Submitting Forms
+ y reaccionar al submit
+(aún no subir a la base de datos)
+
+Crear botón de enviar.
+
+Añadir un evento en el formulario para evitar que se vacíen los datos por defecto.
+
+Y lanzar una función que compruebe que la contraseña sean 6 caracteres o lanza error, y si no da error, por consola muestra los datos de los campos ingresados.
+
+
+<img src="img/96.png">
+<hr>
+<img src="img/97.png">
+
+<img src="img/98.png">
