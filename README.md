@@ -441,3 +441,126 @@ Y lanzar una función que compruebe que la contraseña sean 6 caracteres o lanza
 <img src="img/97.png">
 
 <img src="img/98.png">
+
+## VUE ROUTER SETUP
+
+- Herramienta para manejar rutas (navegación entre vistas) en aplicaciones Vue.js.
+- Permite navegar sin recargar la página (SPA: Single Page Application).
+
+Se puede instalar al crear un nuevo proyecto, seleccionando router en la selección manual.
+
+El router crea un router.js con rutas configuradas en un array:
+
+```js
+const routes = [
+  { path: '/', component: Home },
+  { path: '/about', component: About }
+];
+```
+
+### Router Links
+
+Vue no interceota los enlaces normales, por lo que debemos usar el componente router-link para crear enlaces
+
+<img src="img/99.png">
+
+Tiene la ventaja que se puede Data bind como:
+
+<img src="img/100.png">
+
+Que funciona igual. Pero tiene la ventaja de poder actualizar rápidamente el enlace sin tener que cambiar el código de la vista. 
+
+
+## Estructura de Directorios
+
+
+En components: 
+componentes que no sean específicos a una página y se puedan utilizar en muchas vistas, es decir, reutilizables.
+
+En views, los componentes que son páginas, y si esa pag requiere varios componentes, crear en Views una carpeta
+para esa pag de sus componentes.
+
+En index están las rutas de la aplicación.
+
+Crear un componente recorriendo los datos:
+
+<img src="img/101.png">
+
+Index.vue
+
+<img src="img/102.png">
+
+App.vue
+Enlace
+
+<img src="img/103.png">
+
+<img src="img/104.png">
+
+## Route Parameters
+Detalles por ejemplo del job:
+
+<img src="img/105.png">
+
+Sacar el id de la url:
+
+JobDetails.vue
+
+<img src="img/106.png">
+
+### Dynamic Links
+
+Cuando clcikeemos a un job, nos rediriha al detalle de ese job específico.
+
+De esta manera, le pasamos el id como clave:
+
+<img src="img/107.png">
+
+Aceptar el parámetro como prop para facilitar el acceso a ese valor:
+Podemos simplimicarlo así:
+
+JobDetails.vue
+
+<img src="img/108.png">
+
+Y para que funcione, en Index.js tenemos que ponerle props: true:
+
+<img src="img/109.png">
+
+Y le añadimos unos estilos a los links poniendo una clase:
+
+<img src="img/110.png">
+
+<img src="img/111.png">
+
+## Redirects y 404's
+
+Para redirigir, por ejemplo, que una url dirija hacia cierta ruta que queremos que ya existe:
+
+Index.js
+
+<img src="img/112.png">
+
+404
+Dirigir hacia una página de error NotFound.
+Creamos un componente NotFound.vue en views par aredirigir allí siempre que no encontremos la ruta que queremos.
+
+NotFound.vue
+
+<img src="img/114.png">
+
+
+<img src="img/113.png">
+
+Ahora cuando queramos redirigir hacia una ruta que no existe nos dirigirá a ese componente.
+
+
+### Programmatic Navigation
+
+Podemos navegar entre rutas de manera programática, es decir, sin hacer click en un link, y podemos hacer al usuario ir hacia delante en el navegador, hacia atrás, o reditigir a la página principal:
+
+<img src="img/115.png">
+
+<img src="img/116.png">
+
+<img src="img/117.png">
