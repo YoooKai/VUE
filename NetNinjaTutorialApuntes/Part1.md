@@ -1,3 +1,5 @@
+<a href="https://youtu.be/F7PLPJqVotk?si=euyTkwabAOk1eVzk">VideoTutorial Parte1</a>
+
 VUE se puede usar de dos maneras. Creando una aplicación de una página web, o crear simplemente widgets que controlen una página web. 
 Empezaremos con un widget y lo meteremos en un html, ya que requiere un setup mínimo, y solo tenemos que añadir la librería de vue cdn que copiamos de la documentación de VUE.
 
